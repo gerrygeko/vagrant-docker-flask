@@ -16,4 +16,10 @@ Vagrant.configure(2) do |config|
     wget -qO- https://get.docker.com/ | sh
   SHELL
 
+  vm_name = "vagrant-environment"
+  config.vm.define vm_name do |host|
+    host.vm.synced_folder "webapp/", "/opt/webapp"
+
+    host.vm.network :private_network, :ip => '192.168.59.104'
+  end
 end
