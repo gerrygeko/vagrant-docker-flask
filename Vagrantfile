@@ -20,6 +20,7 @@ Vagrant.configure(2) do |config|
   config.vm.define vm_name do |host|
     host.vm.synced_folder "webapp/", "/opt/webapp"
 
-    host.vm.network :private_network, :ip => '192.168.59.104'
+    # Add this ip to you hosts file with his own hostname
+    host.vm.network :private_network, :ip => '192.168.59.100'
   end
 end
