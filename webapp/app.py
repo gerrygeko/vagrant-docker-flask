@@ -10,4 +10,4 @@ def show_name(instanceid):
     return "Your name is {}".format(instanceid)
 
 if __name__ == "__main__":
-  app.run()
+  app.run(host='0.0.0.0', port=80)
