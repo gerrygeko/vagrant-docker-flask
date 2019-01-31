@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker docker build -t flask-webapp .
+docker build -t flask-webapp .
