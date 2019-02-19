@@ -14,6 +14,10 @@ async def hello():
 async def get_all_teams():
     return jsonify(teams)
 
+@app.route("/healthz")
+def healthz():
+    return "The service is healthy", 200
+
 @app.route("/teams/<string:teamname>")
 async def get_team(teamname):
     return jsonify(teams[teamname])
@@ -25,7 +29,8 @@ async def get_teams_per_floor(floor):
         if value['floor'] is floor:
             teams_found[name] = {
                 "name": value['name'],
-                "department": value['department']
+                "department": value['department'],
+                "floor": value['floor']
             }
     return jsonify(teams_found)
 

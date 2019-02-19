@@ -17,3 +17,5 @@ EXPOSE 80
 ENTRYPOINT [ "python" ]
 
 CMD [ "app.py" ]
+
+HEALTHCHECK CMD curl --fail http://localhost:5000/ || exit 1
