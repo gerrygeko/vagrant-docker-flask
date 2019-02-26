@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 Vagrant.configure(2) do |config|
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "ubuntu/xenial64"
   config.vm.provider "virtualbox" do |vb|
     vb.memory = 2048
     vb.cpus = 2
@@ -15,6 +15,7 @@ Vagrant.configure(2) do |config|
   vm_name = "vagrant-environment"
   config.vm.define vm_name do |host|
     host.vm.synced_folder "webapp/", "/opt/webapp"
+    host.vm.synced_folder "jettywebapp/", "/opt/jettywebapp"
 
     # Add this ip to you hosts file with his own hostname
     host.vm.network :private_network, :ip => '192.168.59.100'
