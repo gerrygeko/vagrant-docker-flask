@@ -4,6 +4,7 @@ import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.AbstractHandler;
+import org.eclipse.jetty.servlet.ServletContextHandler;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,11 +16,14 @@ public class JettyService {
     private static final int PORT = 80;
 
     public static void main(String[] args) throws Exception {
-        startWebServer(new JettyHandler());
+        Handler handler = new JettyHandler();
+
+        startWebServer(handler);
     }
 
     private static void startWebServer(Handler handler) throws Exception {
         Server server = new Server(PORT);
+        ServletContextHandler servletContextHandler = new ServletContextHandler(server, "/context", true, false);
         server.setHandler(handler);
         server.start();
         server.join();

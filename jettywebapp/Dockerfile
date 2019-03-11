@@ -1,6 +1,6 @@
 FROM openjdk:8-jre-slim
 
-COPY ./target/jettywebapp.jar /opt/jettywebapp.jar
+COPY ./target/jettywebapp-jar-with-dependencies.jar /opt/jettywebapp.jar
 
 EXPOSE 80
 
