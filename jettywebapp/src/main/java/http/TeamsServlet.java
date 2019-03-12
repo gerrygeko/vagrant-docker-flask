@@ -1,18 +1,23 @@
 package http;
 
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
+import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
+
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
 
-@WebServlet("/teams")
-public class TeamsServlet extends HttpServlet {
+@Path("/teams")
+@RequiredArgsConstructor(onConstructor = @__(@Inject))
+public final class TeamsServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-        response.setContentType("text/html");
-        response.getWriter().println("Here there will be the list of teams");
+    @SneakyThrows
+    @GET
+    public Response doGet(){
+        return ServletUtils.createOkResponse("Team page");
     }
 
 }
