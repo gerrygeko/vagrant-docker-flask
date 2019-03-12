@@ -1,5 +1,6 @@
 package server;
 
+import http.CowServlet;
 import http.TeamsServlet;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jetty.http.HttpGenerator;
@@ -63,6 +64,7 @@ public class JettyService {
     private static ResourceConfig createResourceConfig() {
         ResourceConfig resourceConfig = new ResourceConfig();
         resourceConfig.register(TeamsServlet.class);
+        resourceConfig.register(CowServlet.class);
         return resourceConfig;
     }
 
