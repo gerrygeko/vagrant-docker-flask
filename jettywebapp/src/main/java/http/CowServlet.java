@@ -19,7 +19,13 @@ public final class CowServlet {
 
 	@GET
 	public Response checkHealth(@QueryParam("say") String say) {
-		
+
+		if (say == null) {
+			say = cowSay("Hellow world!");
+		} else {
+			say = cowSay(say);
+		}
+
 		return Response
 				.ok()
 				.header("Cache-Control", "no-store, must-revalidate")
@@ -27,4 +33,19 @@ public final class CowServlet {
 				.entity(say)
 				.build();
 	}
+
+	public String cowSay(String displayedMessage) {
+		String cowMessage =
+				"-----------------------------\n" +
+						"<" + displayedMessage + ">\n" +
+						"<" + System.currentTimeMillis() + ">\n" +
+						"-----------------------------\n" +
+						"      \\   ^__^              \n" +
+						"       \\  (oo)\\_______      \n" +
+						"          (__)\\       )\\/\\  \n" +
+						"              ||----w |      \n" +
+						"              ||     ||      ";
+		return cowMessage;
+	}
+
 }
