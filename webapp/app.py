@@ -20,6 +20,7 @@ def healthz():
 
 @app.route("/teams/<string:teamname>")
 async def get_team(teamname):
+    teamname = teamname.decode('base64','strict')
     return jsonify(teams[teamname])
 
 @app.route("/floor/<int:floor>")
