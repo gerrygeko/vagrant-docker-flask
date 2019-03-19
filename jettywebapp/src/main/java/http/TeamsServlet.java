@@ -30,7 +30,7 @@ public final class TeamsServlet {
     private Response sendRequestToWebserver() {
         StringBuffer response = new StringBuffer();
         try {
-            URL url = new URL("http://webserver:5000/teams/zythos");
+            URL url = new URL("http://webserver/teams/zythos");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
 
